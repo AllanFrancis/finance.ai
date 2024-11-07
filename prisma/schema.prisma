@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Transction {
+  id            String                  @id @default(uuid())
+  name          String
+  type          TransctionType
+  amount        Decimal                 @db.Decimal(10, 2)
+  category      TransctionCategory
+  paymentMethod TransctionPaymentMethod
+  date          DateTime
+  createdAt     DateTime                @default(now())
+  updatedAt     DateTime                @updatedAt
+}
+
+enum TransctionPaymentMethod {
+  CREDIT_CARD
+  DEBIT_CARD
+  BANK_TRANSFER
+  BANK_SLIP
+  CASH
+  PIX
+  OTHER
+}
+
+enum TransctionType {
+  DEPOSIT
+  EXPENSE
+  INVESTMENT
+}
+
+enum TransctionCategory {
+  HAUSING
+  TRANSPORTATION
+  FOOD
+  ENTERNTAINMENT
+  HEALTH
+  UTILITY
+  SALARY
+  EDUCATION
+  OTHER
+}
