@@ -17,6 +17,7 @@ model Transction {
   date          DateTime
   createdAt     DateTime                @default(now())
   updatedAt     DateTime                @updatedAt
+  userId        String
 }
 
 enum TransctionPaymentMethod {
