@@ -11,7 +11,6 @@ const LoginPage = async () => {
   if (userId) {
     redirect("/");
   }
-
   return (
     <div className="grid h-full grid-cols-2">
       {/* ESQUERDA */}
